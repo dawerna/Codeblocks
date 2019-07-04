@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Check
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Check\ here.\r\n\r\n\ @author\ Simon\ Werner\r\n\ @version\ 02.07.2019\r\n
+comment1.params=visibility\ parameters\ returnObject
+comment1.target=Check(boolean,\ CheckParameters[],\ java.lang.Object)
+numComments=2

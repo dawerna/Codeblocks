@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Assignment
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Assignment\ here.\r\n\r\n\ @author\ Simon\ Werner\r\n\ @version\ 02.07.2019\r\n
+comment1.params=title\ description\ difficulty\ code\ checks
+comment1.target=Assignment(java.lang.String,\ java.lang.String,\ Difficulty,\ java.lang.String,\ Check[])
+numComments=2
