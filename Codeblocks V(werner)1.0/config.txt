@@ -1,0 +1,2 @@
+theme: light
+sidebarLength: 1340
