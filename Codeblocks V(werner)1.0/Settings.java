@@ -1,6 +1,6 @@
+
 import java.lang.*;
 import java.io.*;
-
 
 /**
  * Einstellungsklasse: verwaltet theme (dark/light), Fensterbreite (x) und evtl. Sprache
@@ -38,6 +38,11 @@ public class Settings
         }
     }
     
+    public void changeSidebarLength(int x){
+        this.sidebarLength = x;
+        //ändert Fensterbreite 
+    }
+    
     public void setThemeDark(){
         if(getTheme() != false){
          this.theme = false;
@@ -50,20 +55,19 @@ public class Settings
     public int sidebarLength(){
         return sidebarLength;
         //gibt aktuelle Seitenlänge in Pixel heraus
-    }
-    
+    } 
     
     public void loadFromConfig(){
          try{
             FileReader fr = new FileReader("config.txt");
             BufferedReader br = new BufferedReader(fr);
-            
+             
             //FileReader liest aus der Datei "config.txt", BufferedReader liest Daten des
             //FileReaders aus
             
             String line = "";
-            
-            while( (line = br.readLine()) != null){
+               
+             while( (line = br.readLine()) != null){
                 //Solange es Zeilen zum Auslesen gibt, wird weiter gelesen
               line = br.readLine();
               
@@ -71,40 +75,51 @@ public class Settings
               String part1 = parts[0];
               String part2 = parts[1];
         
-               switch(line){
+               switch(part1){
                   case "theme":
-                  
-                  if(parts[1]=="dark"){
+                  System.out.println("check 1");
+                  if(parts[1].equals("dark")){ //überprüft, ob part2 gleich "dark" ist
                       setThemeDark(); 
+                      System.out.println("theme set");
                       //theme auf dark setzen 
                     }
-                  else{
+                  else if(parts[1].equals("light")){
                       setThemeLight();
+                      System.out.println("theme set");
                       //theme auf light setzen
                 }
+                else{
+                    setThemeLight();
+                    //bei keinem Input, Theme auf Light setzen
+                }
+                System.out.println("check 2");
                 break;   
          
                 case "sidebarLength":
                 int x = Integer.parseInt(parts[1]);
-                this.sidebarLength = x;
+                changeSidebarLength(x);
+                System.out.println("check 3");
                 // Fensterbreite anpassen
                 break;
          
+                default:
+                break;
                 //case "language":
                 //break;
               }
-              
+               
             }
-            System.out.println("finished");
+          
             br.close();
-            
+            System.out.println("finished");
+             
            }
         
         catch(IOException e){
             System.out.println("Datei konnte nicht ausgelesen werden."+ e.getMessage());
             //Fehlermeldung
        }
-        
+         
         
     }
     
@@ -113,8 +128,8 @@ public class Settings
         try{
             PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("config.txt")));
             
-            pw.println("theme: " + themetype);
             pw.println("sidebarLength: " + sidebarLength);
+            pw.println("theme: " + themetype);
             // pw.println("langauge: " );
             
             pw.close();

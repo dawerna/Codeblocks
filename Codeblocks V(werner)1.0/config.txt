@@ -1,2 +1,2 @@
-theme: light
-sidebarLength: 1340
+theme: true
+sidebarLength: 500
